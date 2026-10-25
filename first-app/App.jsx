@@ -3,10 +3,9 @@ import StudentCard from './components/StudentCard.jsx';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Hello World</Text>
+    <View style={styles.container} /*class="container"*/>
+      <Text >Hello World</Text>
       <Text>First React APP</Text>
-
       <StudentCard
         stdId={6478645}
         stdName="Ahmad Saeed"
@@ -14,9 +13,7 @@ export default function App() {
         m1={90}
         m2={85}
         m3={70}
-        city="Hebron"
-        street="Univeristy"
-        postal="365456"
+        address={{ city: 'Hebron', street: 'Univeristy', postal: '365456' }}
       />
       <StudentCard
         stdId={1234567}
@@ -25,9 +22,7 @@ export default function App() {
         m1={91}
         m2={95}
         m3={87}
-        city="Ramallah"
-        street="Masion"
-        postal="22221"
+        address={{ city: 'Ramallah', street: "Masion", postal: '45345' }}
       />
       <StudentCard
         stdId={9879878}
@@ -36,18 +31,22 @@ export default function App() {
         m1={92}
         m2={75}
         m3={79}
-        city="Dura"
-        street="Stadium street"
-        postal="89798"
+        address={{ city: 'Dura', street: "Stadium street", postal: '867867' }}
       />
     </View>
   );
 }
 
+// <style>
+// .title{
+//   font-size: 20px
+// }
+// </style>
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#fff5db',
     alignItems: 'center',
     justifyContent: 'center',
   },
