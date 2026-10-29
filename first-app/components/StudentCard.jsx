@@ -10,10 +10,14 @@ function StudentCard(props) {
   return (
     <View style={styles.wrapper}>
       <Text style={styles.text}><Text style={styles.info}>Student ID:</Text> {stdId}</Text>
-      <Text style={styles.text}><Text style={styles.info}>Student Name:</Text> {stdName}</Text>
+      <Text style={styles.text}>
+        <Text style={{ ...styles.info, color: '#00aa55', fontSize: 12 }}>
+          Student Name:
+        </Text> {stdName}
+      </Text>
       <Text style={styles.text}><Text style={styles.info}>Student Avg:</Text> {avg}</Text>
-      <Text style={{ color: "#0000FF" }}>Student is {isGraduated === false ? 'NOT ' : ''}graduated</Text>
-      <StudentAddress
+      <Text style={[styles.info, styles.moreInfo]}>Student is {isGraduated === false ? 'NOT ' : ''}graduated</Text>
+      <StudentAddress 
         address={props.address}
       />
     </View>
@@ -22,19 +26,23 @@ function StudentCard(props) {
 
 export default StudentCard;
 
-const styles = StyleSheet.create({
+const styles= StyleSheet.create({
   wrapper: {
     borderWidth: 1,
     borderColor: "#777777",
-    width: "100%",
+    width:"100%",
     paddingVertical: 10,
     paddingHorizontal: 30
   },
-  info: {
+  info:{
     fontWeight: "bold",
     textTransform: "uppercase"
   },
-  text: {
+  text:{
     fontSize: 12
+  },
+  moreInfo: {
+    textTransform: 'capitalize',
+    color:"#0000FF"
   }
 })

@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native';
 
-const StudentAddress = (props) => {
+const StudentAddress = (props)=>{
   return (
     <View style={styles.wrapper}>
       <Text style={styles.text}>City: {props.address.city}</Text>
@@ -13,11 +13,16 @@ const StudentAddress = (props) => {
 
 export default StudentAddress;
 
-const styles = StyleSheet.create({
-  wrapper: {
+const styles= StyleSheet.create({
+  wrapper:{
+    display:'flex',
+    flexDirection: 'row',
+    justifyContent:'space-between',
+    columnGap: 10,
     borderTopColor: "#f77700",
     borderTopWidth: 3,
-    width: "50%",
+    borderStyle: 'dashed',
+    width: "100%",
     marginTop: 5
   },
   text: {
