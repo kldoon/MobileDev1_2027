@@ -1,4 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, Button, View } from 'react-native';
+import { useState } from 'react';
+
 import StudentCard from './components/StudentCard.jsx';
 
 export default function App() {
@@ -7,9 +9,34 @@ export default function App() {
   const std3Name = 'Ayman Mohammad';
 
   const std1Marks = [90, 85, 70];
+  // let std2M1 = 91;
+  const [std2M1, setStd2M1] = useState(91);
+  
+  // let std2M2 = 95;
+  const [std2M2, setStd2M2] = useState(95);
+  
+  let std2M3 = 87;
   let std1IsGraduated = false;
   if (std1Marks[0] >= 60 && std1Marks[1] >= 60 && std1Marks[2] >= 60) {
     std1IsGraduated = true;
+  }
+
+  /* 
+  const handleChangeStd2Marks = () => {
+
+  };
+  */
+
+  function handleChangeStd2Marks() {
+    console.log('Button has been clicked');
+    // std2M1 = 71;
+    setStd2M1(71);
+
+    // std2M2 = 80;
+    setStd2M2(80);
+
+    console.log(std2M1);
+    console.log(std2M2);
   }
 
   return (
@@ -29,11 +56,12 @@ export default function App() {
         stdId={1234567}
         stdName={std2Name}
         isGraduated={true}
-        m1={91}
-        m2={95}
-        m3={87}
+        m1={std2M1}
+        m2={std2M2}
+        m3={std2M3}
         address={{ city: 'Ramallah', street: 'Masion', postal: '45345' }}
       />
+      <Button onPress={handleChangeStd2Marks} title="Change student 2 Marks" />
       <StudentCard
         stdId={9879878}
         stdName={std3Name}
@@ -61,7 +89,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
 
 const students = [
   {
