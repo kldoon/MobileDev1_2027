@@ -1,4 +1,4 @@
-import { Text, View } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import StudentAddress from './StudentAddress.jsx'
 
 function StudentCard(props) {
@@ -8,20 +8,41 @@ function StudentCard(props) {
   const avg = (props.m1 + props.m2 + props.m3) / 3;
 
   return (
-    <View>
-      <Text>==========================</Text>
-      <Text>Student ID: {stdId}</Text>
-      <Text>Student Name: {stdName}</Text>
-      <Text>Student Avg: {avg}</Text>
-      <Text>Student is {isGraduated === false ? 'NOT ' : ''}graduated</Text>
+    <View style={styles.wrapper}>
+      <Text style={styles.text}><Text style={styles.info}>Student ID:</Text> {stdId}</Text>
+      <Text style={styles.text}>
+        <Text style={{ ...styles.info, color: '#00aa55', fontSize: 12 }}>
+          Student Name:
+        </Text> {stdName}
+      </Text>
+      <Text style={styles.text}><Text style={styles.info}>Student Avg:</Text> {props.m1},{props.m2},{props.m3} | {avg}</Text>
+      <Text style={[styles.info, styles.moreInfo]}>Student is {isGraduated === false ? 'NOT ' : ''}graduated</Text>
       <StudentAddress
-        city={props.city}
-        street={props.street}
-        postal={props.postal}
+        address={props.address}
       />
-      <Text>==========================</Text>
     </View>
   );
 }
 
 export default StudentCard;
+
+const styles = StyleSheet.create({
+  wrapper: {
+    borderWidth: 1,
+    borderColor: "#777777",
+    width: "100%",
+    paddingVertical: 10,
+    paddingHorizontal: 30
+  },
+  info: {
+    fontWeight: "bold",
+    textTransform: "uppercase"
+  },
+  text: {
+    fontSize: 12
+  },
+  moreInfo: {
+    textTransform: 'capitalize',
+    color: "#0000FF"
+  }
+})
