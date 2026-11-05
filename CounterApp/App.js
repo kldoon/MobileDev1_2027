@@ -17,7 +17,23 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.counter}>{counter}</Text>
+      {/*
+        counter >= 10
+        ? <Text style={{ ...styles.counter, fontSize: 30, marginBottom: 10 }}>Heyyy You Hit {counter}</Text>
+        : null
+        */}
+      {counter >= 10 && (
+        <Text style={{ ...styles.counter, fontSize: 30, marginBottom: 10 }}>
+          Heyyy You Hit {counter}
+        </Text>
+      )}
+      <Text
+        style={{
+          ...styles.counter,
+          color: counter >= 10 ? 'green' : '#000000',
+        }}>
+        {counter}
+      </Text>
       <Button title="+1" onPress={addOne} />
       <Text>...</Text>
       <Button
@@ -41,6 +57,6 @@ const styles = StyleSheet.create({
   counter: {
     fontSize: 40,
     textAlign: 'center',
-    margin: 10,
+    margin: 10
   },
 });
