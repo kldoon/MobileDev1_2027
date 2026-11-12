@@ -1,12 +1,22 @@
-import {View, Text, TextInput, StyleSheet} from 'react-native';
+import {View, Text, TextInput, Button, StyleSheet} from 'react-native';
 import { useState } from 'react';
 
 const FindProduct = () => {
-  const [pName, setPName] = useState("Keybaord");
+  const [pName, setPName] = useState("");
+  const [city, setCity] = useState("");
+  const [pQ, setPQ] = useState(0);
+  const [pDesc, setPDesc] = useState("");
 
   const handleProductNameChange = (val) => {
     setPName(val);
     // console.log(val);
+  }
+
+  const handleSubmit = () => {
+    console.log(pName);
+    console.log(city);
+    console.log(pQ);
+    console.log(pDesc);    
   }
 
   return (
@@ -19,6 +29,9 @@ const FindProduct = () => {
           placeholder="Search for Product"
           onChangeText={handleProductNameChange}
           value={pName}
+          // secureTextEntry={true}   // make it password input
+          maxLength={30}
+
         />
       </View>
       <View style={styles.inputGroup}>
@@ -26,8 +39,30 @@ const FindProduct = () => {
         <TextInput
           style={styles.input}
           placeholder="Where do you live?"
+          // onChangeText={setCity}
+          onChangeText={val => setCity(val.toUpperCase())}
         />
       </View>
+      <View style={styles.inputGroup}>
+        <Text>Quantity</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="How many items?"
+          inputMode="numeric"
+          onChangeText={val => setPQ(Number(val))}
+        />
+      </View>
+      <View style={styles.inputGroup}>
+        <Text>Description</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Describe your product?"
+          multiline
+          numberOfLines={3}
+          onChangeText={setPDesc}
+        />
+      </View>
+      <Button title="Search" onPress={handleSubmit}/>
     </View>
   )
 };
