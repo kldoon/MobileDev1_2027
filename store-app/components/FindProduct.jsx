@@ -2,8 +2,8 @@ import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import { useState } from 'react';
 
 const FindProduct = () => {
-
-  // Composite state
+  const [products, setProducts] = useState([]);
+  // ["aaa","bbb","ccc"]
   const [data, setData] = useState({
     name: "",
     city: "",
@@ -12,31 +12,22 @@ const FindProduct = () => {
   });
 
   const handleDataChange = (value, field) => {
-    // if(field === "name"){
-    //   setData({...data, name: value});  
-    // } else if (field === "city"){
-    //   setData({...data, city: value});
-    // } else if(field === "quantity"){
-    //   setData({...data, quantity: value});
-    // } else if(field === "desc"){
-    //   setData({...data, desc: value});
-    // }
-
     setData({ ...data, [field]: value });
-    // This is like the following code
-
-    // const person={name:'Ahmad', age:20}
-    // person.age=30
-    // person['age']=30
   }
 
   const handleSubmit = () => {
-    console.log(data);
+    //products.push(data.name);
+    // craete a copy of the array, and add new item to it
+    const tmp = [...products, data];
+
+    setProducts(tmp);
   }
+
+
 
   return (
     <View>
-      <Text>Find Product</Text>
+      <Text>Add New Product</Text>
       <View style={styles.inputGroup}>
         <Text>Product Name</Text>
         <TextInput
@@ -77,7 +68,21 @@ const FindProduct = () => {
           onChangeText={val => handleDataChange(val, "desc")}
         />
       </View>
-      <Button title="Search" onPress={handleSubmit} />
+      <Button title="Add" onPress={handleSubmit} />
+      <View>
+        {
+          // products.map((p)=>{return <Text>
+          //   {p.name}  |  {p.city}  |  {p.quantity}  | {p.desc}
+          // </Text>})
+          products.map((p) => <Text style={styles.item}>
+            {p.name}  |  {p.city}  |  {p.quantity}  | {p.desc}
+          </Text>)
+        }
+
+        {
+          // <Text>{JSON.stringify(products)}</Text>
+        }
+      </View>
     </View>
   )
 };
@@ -93,5 +98,11 @@ const styles = StyleSheet.create({
   },
   inputGroup: {
     marginBottom: 10
+  },
+  item: {
+    margin: 5,
+    borderColor: "#a3a3a3",
+    borderWidth: 1,
+    backgroundColor: "#03e3e3e"
   }
 })
