@@ -1,4 +1,4 @@
-import { View, ScrollView, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, ScrollView, Text, TextInput, Button, StyleSheet, Image } from 'react-native';
 import { useState } from 'react';
 
 const FindProduct = () => {
@@ -82,6 +82,11 @@ const FindProduct = () => {
       </View>
       <Button title="Add" onPress={handleSubmit} />
       <ScrollView>
+        <Image
+          style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
+          source={{
+            uri: 'https://img.magnific.com/free-vector/pastel-rainbow-coloured-watercolour-texture-background_1048-17703.jpg'
+          }} />
         {
           // products.map(getItem)
           products.map((p, index) => <View key={index}>
